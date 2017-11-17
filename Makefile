@@ -6,14 +6,16 @@
 #    By: bpisano <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/16 14:30:17 by bpisano           #+#    #+#              #
-#    Updated: 2017/11/16 17:17:43 by bpisano          ###   ########.fr        #
+#    Updated: 2017/11/17 10:55:56 by bpisano          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = fillit
 
-SRC = ./sources/read_file.c		\
-	  ./sources/main.c			\
+SRC = ./sources/main.c			\
+	  ./sources/read_file.c		\
+	  ./sources/input_verify.c	\
+	  ./sources/model_verify.c	\
 
 OBJECTS = $(SRC:.c=.o)
 
