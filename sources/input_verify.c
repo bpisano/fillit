@@ -6,12 +6,11 @@
 /*   By: bpisano <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/16 17:33:56 by bpisano           #+#    #+#             */
-/*   Updated: 2017/11/17 13:36:09 by bpisano          ###   ########.fr       */
+/*   Updated: 2017/11/17 15:33:03 by bpisano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fillit.h"
-#include <stdio.h>
 
 /*
  ** Calculate the len of a line ended by a \n.
