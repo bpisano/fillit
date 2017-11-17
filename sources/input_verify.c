@@ -6,7 +6,7 @@
 /*   By: bpisano <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/16 17:33:56 by bpisano           #+#    #+#             */
-/*   Updated: 2017/11/16 18:40:57 by bpisano          ###   ########.fr       */
+/*   Updated: 2017/11/17 12:48:34 by bpisano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,32 +24,42 @@ static int	line_len(char *str)
 	{
 		len++;
 		i++;
-	}
+	}	
 	return (len);
 }
 
-static int	lines_per_tetri_is_valid(char *str)
+/*
+ ** Check if all char are valid and if char count is gratter or equal than 12.
+ ** Return 1 if all are valid, else 0.
+*/
+
+static int valid_char(char *str)
 {
 	int		i;
-	int		lines;
+	int		d;
+	int		p;
+	int		b;
 
 	i = 0;
+	d = 0;
+	p = 0;
+	b = 0;
 	while (str[i])
 	{
-		lines = 0;
-		while (line_len(&str[i]) == 4 && lines < 4 && str[i])
-		{
-			lines++;
-			i += line_len(&str[i]) + 1;
-		}
-		if (str[i] == '\n' && line_len(&str[i]) == 0)
-			i++;
-		if ((str[i] != '\n' && str[i] != '\0') || lines != 4)
-			return (0);	
-		return (lines_per_tetri_is_valid(&str[i]));
+		if (!(str[i] == '#' || str[i] == '.' || str[i] == '\n'))
+			return (0);
+		str[i] == '#' ? d++ : d;
+		str[i] == '.' ? p++ : p;
+		str[i] == '\n' ? b++ : b;
+		i++;
 	}
-	return (1);
+	return (b >= 4 && d + p >= 8);
 }
+
+/*
+ ** Check if there is not more 5 char per lines or if line is only \n.
+ ** Return 1 if all are valid, else 0.
+*/
 
 static int	char_per_line_is_valid(char *str)
 {
@@ -68,28 +78,34 @@ static int	char_per_line_is_valid(char *str)
 	}
 	return (1);
 }
-/*
-   static int	character_are_valid(char *str)
-   {
-   int		i;
 
-   i = 0;
-   while (str[i])
-   {
-   if (!(str[i] == '.' || str[i] == '#' || str[i] == '\n'))
-   return (0);
-   i++;
-   }
-   return (1);
-   }*/
-
-int		content_file_is_valid(char *content)
+static int	lines_per_tetri_is_valid(char *str)
 {
-	return (char_per_line_is_valid(content));
+	int		i;
+	int		line_index;
+	int		offset;
+
+	if (str[0] == '\n')
+		return (0);
+	i = 5;
+	line_index = 1;
+	while (str[i])
+	{
+		offset = (line_index / 4) - 1 < 0 ? 0 : (line_index / 4) - 1;
+		if (!(line_len(&str[i]) == 0 && (line_index - offset) % 4 == 0) &&
+				!(line_len(&str[i]) == 4 && (line_index - offset) % 4 != 0))
+		{
+			return (0);
+		}
+		line_index++;
+		i += line_len(&str[i]) + 1;
+	}
+	return (1);
 }
 
-int		main()
+int		input_is_valid(char *content)
 {
-	printf("%d", lines_per_tetri_is_valid("....\n....\n....\n....\n\n....\n....\n....\n...."));
-	return (0);
+	return (valid_char(content) &&
+			char_per_line_is_valid(content) &&
+			lines_per_tetri_is_valid(content));
 }
