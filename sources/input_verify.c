@@ -6,12 +6,17 @@
 /*   By: bpisano <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/16 17:33:56 by bpisano           #+#    #+#             */
-/*   Updated: 2017/11/17 13:06:17 by bpisano          ###   ########.fr       */
+/*   Updated: 2017/11/17 13:36:09 by bpisano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fillit.h"
 #include <stdio.h>
+
+/*
+ ** Calculate the len of a line ended by a \n.
+ ** Return the len of the line.
+*/
 
 static int	line_len(char *str)
 {
@@ -79,13 +84,19 @@ static int	char_per_line_is_valid(char *str)
 	return (1);
 }
 
+/*
+ ** Check if there is 4 line followed by a \n.
+ ** Return 1 if all are valid, else 0.
+*/
+
 static int	lines_per_tetri_is_valid(char *str)
 {
 	int		i;
 	int		line_index;
 	int		offset;
 
-	if (str[0] == '\n')
+	if (str[0] == '\n' || (str[ft_strlen(str) - 1] != '\n' &&
+				str[ft_strlen(str) - 2] != '\n'))
 		return (0);
 	i = 5;
 	line_index = 1;
@@ -100,7 +111,7 @@ static int	lines_per_tetri_is_valid(char *str)
 		line_index++;
 		i += line_len(&str[i]) + 1;
 	}
-	return (1);
+	return ((line_index - offset) % 4 == 0);
 }
 
 int			input_is_valid(char *content)
