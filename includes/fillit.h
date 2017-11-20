@@ -6,7 +6,7 @@
 /*   By: bpisano <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/16 14:28:20 by bpisano           #+#    #+#             */
-/*   Updated: 2017/11/20 13:44:39 by bpisano          ###   ########.fr       */
+/*   Updated: 2017/11/20 15:50:21 by htaillef         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 
 typedef struct	s_tetri
 {
-	int			**tetri;
+	char		**tetri;
 	int			width;
 	int			height;
 }				t_tetri;
