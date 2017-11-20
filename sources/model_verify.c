@@ -6,21 +6,21 @@
 /*   By: htaillef <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/16 17:30:34 by htaillef          #+#    #+#             */
-/*   Updated: 2017/11/16 18:23:13 by htaillef         ###   ########.fr       */
+/*   Updated: 2017/11/20 13:39:49 by htaillef         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fillit.h"
 
 /*
- ** Check if tetri[x][y] exists and is 1.
+ ** Check if tetri[x][y] exists and is a block.
  ** Return 1 if it's the case, else 0.
 */
 
 int		check_contact(int **tetri, int x, int y)
 {
 	if (x >= 0 && x <= 3 && y >= 0 && y <= 3)
-		return (tetri[x][y] == 1);
+		return (tetri[x][y] != 0);
 	return (0);
 }
 
@@ -40,13 +40,13 @@ int		is_in_contact(int **tetri, int x, int y)
 		return (0);
 	if (x > 3 || y > 3)
 		return (0);
-	if (check_contact(tetri, x + 1, y) == 1)
+	if (check_contact(tetri, x + 1, y))
 		return (1);
-	if (check_contact(tetri, x - 1, y) == 1)
+	if (check_contact(tetri, x - 1, y))
 		return (1);
-	if (check_contact(tetri, x, y + 1) == 1)
+	if (check_contact(tetri, x, y + 1))
 		return (1);
-	if (check_contact(tetri, x, y - 1) == 1)
+	if (check_contact(tetri, x, y - 1))
 		return (1);
 	return (0);
 }
@@ -71,7 +71,7 @@ int		check_model(t_tetri *model)
 		y = 0;
 		while (y < 4)
 		{
-			if (model->tetri[i][y] == 1)
+			if (model->tetri[i][y] != 0)
 			{
 				nb_blocks++;
 				if (nb_blocks > 4)
@@ -86,18 +86,18 @@ int		check_model(t_tetri *model)
 }
 
 /*
- ** Check if all models are valid.
+ ** Check if all model are valid. models must be NULL finished.
  ** Return 1 if all are valid, else 0.
 */
 
-int		model_is_valid(t_tetri **models, int nb_models)
+int		model_is_valid(t_tetri **models)
 {
 	int		i;
 
 	if (!(*models))
 		return (0);
 	i = 0;
-	while (i < nb_models)
+	while (models[i] != NULL)
 	{
 		if (check_model(models[i]) == 0)
 			return (0);

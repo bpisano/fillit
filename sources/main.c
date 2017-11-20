@@ -6,7 +6,7 @@
 /*   By: bpisano <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/16 17:14:27 by bpisano           #+#    #+#             */
-/*   Updated: 2017/11/20 12:59:42 by bpisano          ###   ########.fr       */
+/*   Updated: 2017/11/20 13:41:58 by htaillef         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 int		main(int ac, char **av)
 {
 	char	*input;
-	int		size;
 	t_tetri	**model;
 
 	if (ac != 2)
@@ -29,8 +28,8 @@ int		main(int ac, char **av)
 		ft_putstr("error\n");
 		return (0);
 	}
-	model = build_model(input, &size);	
-	if (!model_is_valid(model, size))
+	model = build_model(input);
+	if (!model_is_valid(model))
 	{
 		ft_putstr("error\n");
 		return (0);
