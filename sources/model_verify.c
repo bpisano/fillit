@@ -6,7 +6,7 @@
 /*   By: htaillef <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/16 17:30:34 by htaillef          #+#    #+#             */
-/*   Updated: 2017/11/20 16:27:20 by htaillef         ###   ########.fr       */
+/*   Updated: 2017/11/20 16:36:15 by htaillef         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,9 +74,7 @@ int		check_model(t_tetri *model)
 			if (model->tetri[i][y] != '.')
 			{
 				nb_blocks++;
-				if (nb_blocks > 4)
-					return (0);
-				if (is_in_contact(model->tetri, i, y) == 0)
+				if (nb_blocks > 4 || is_in_contact(model->tetri, i, y) == 0)
 					return (0);
 			}
 			y++;
