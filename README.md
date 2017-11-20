@@ -24,7 +24,7 @@ Here is how a t_tetri is declared :
 
     typedef struct	s_tetri
     {
-    	char		         **tetri;
+    	char   **tetri;
     	int			         width;
     	int			         height;
     }               t_tetri;
