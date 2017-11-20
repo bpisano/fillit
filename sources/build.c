@@ -6,7 +6,7 @@
 /*   By: bpisano <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/17 15:32:08 by bpisano           #+#    #+#             */
-/*   Updated: 2017/11/20 14:05:41 by bpisano          ###   ########.fr       */
+/*   Updated: 2017/11/20 14:18:35 by bpisano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,24 +78,30 @@ int			**int_model(char **str)
 	return (tetri);
 }
 
-t_tetri		**model(char **str)
+t_tetri		*new_tetri(int **tetri_table)
+{
+	t_tetri	*new;
+
+	if (!(new = (t_tetri *)malloc(sizeof(t_tetri))))
+		return (NULL);
+	new->tetri = tetri_table;
+	new->width = 0;
+	new->height = 0;
+	return (new);
+}
+
+t_tetri		**model(char **str, int t_n)
 {
 	int		i;
 	t_tetri	**model;
-	t_tetri	*tetri;
 
-	if (!(model = (t_tetri **)malloc(sizeof(t_tetri *) + 1)))
+	if (!(model = (t_tetri **)malloc(sizeof(t_tetri *) * (t_n + 1))))
 		return (NULL);
 	i = 0;
 	while (str[i])
 	{
-		ft_putnbr(i);
-		if (!(tetri = (t_tetri *)malloc(sizeof(t_tetri))))
+		if (!(model[i / 4] = new_tetri(int_model(&str[i]))))
 			return (NULL);
-		tetri->tetri = int_model(&str[i]);
-		tetri->width = 0;
-		tetri->height = 0;
-		model[i / 4] = tetri;
 		i += 4;
 	}
 	model[i / 4] = NULL;
@@ -112,7 +118,6 @@ t_tetri		**build_model(char *str)
 	t_n = split_len(split) / 4;
 	if (!(t_model = (t_tetri **)malloc(sizeof(t_tetri *) * (t_n + 1))))
 		return (NULL);
-	t_model = model(split);
-	//print_model(t_model);
+	t_model = model(split, t_n);
 	return (t_model);
 }
