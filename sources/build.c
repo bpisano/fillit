@@ -6,7 +6,7 @@
 /*   By: bpisano <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/17 15:32:08 by bpisano           #+#    #+#             */
-/*   Updated: 2017/11/20 13:33:23 by bpisano          ###   ########.fr       */
+/*   Updated: 2017/11/20 13:43:36 by bpisano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,14 +107,15 @@ t_tetri		**model(char **str)
 	return (model);
 }
 
-t_tetri		**build_model(char *str, int *size)
+t_tetri		**build_model(char *str)
 {
 	char	**split;
+	int		t_n;
 	t_tetri	**t_model;
 
 	split = ft_strsplit(str, '\n');
-	*size = split_len(split) % 4;
-	if (!(t_model = (t_tetri **)malloc(sizeof(t_tetri *) * (*size + 1))))
+	t_n = split_len(split) % 4;
+	if (!(t_model = (t_tetri **)malloc(sizeof(t_tetri *) * (t_n + 1))))
 		return (NULL);
 	t_model = model(split);
 	//print_model(t_model);
