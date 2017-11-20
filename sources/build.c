@@ -6,7 +6,7 @@
 /*   By: bpisano <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/17 15:32:08 by bpisano           #+#    #+#             */
-/*   Updated: 2017/11/20 16:34:14 by bpisano          ###   ########.fr       */
+/*   Updated: 2017/11/20 16:38:02 by bpisano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,6 @@ t_tetri		**model(char **str, int t_n)
 		i += 4;
 	}
 	model[i / 4] = NULL;
-	print_model(model);
 	return (model);
 }
 
