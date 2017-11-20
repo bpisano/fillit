@@ -1,13 +1,12 @@
-#fillit
-
+# fillit
 Here is the complete fillit project. It is designed to pass all the [42FileChecker](https://github.com/jgigault/42FileChecker) unit test.
 
-#How does it works ?
+# How does it works ?
 Fillit is designed to takes one file in parameter containing from 0 to 26 [tetriminos](https://fr.wikipedia.org/wiki/Tétromino). The file should only contain "#", "." and "\n" characters.
 Fillit will first verify the input (called **Verification** step), build a model that will be used for the solving algorithm (called **Build** step), adjust the tetriminos (called **Adjustment** step), then find the smaller square the tetriminos can fit in (called the **Solve** step).
 
-#Steps
-##Read
+# Steps
+## Read
 Simply call `char *read_file(char *file_name);` to read the content in **file_name**.
 
 ##Verify
