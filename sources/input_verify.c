@@ -6,7 +6,7 @@
 /*   By: bpisano <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/16 17:33:56 by bpisano           #+#    #+#             */
-/*   Updated: 2017/11/17 15:33:03 by bpisano          ###   ########.fr       */
+/*   Updated: 2017/11/20 16:30:03 by bpisano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,6 +112,11 @@ static int	lines_per_tetri_is_valid(char *str)
 	}
 	return ((line_index - offset) % 4 == 0);
 }
+
+/*
+ ** Check if the input is valid.
+ ** Return 1 if all is valid, else 0.
+*/
 
 int			input_is_valid(char *content)
 {
