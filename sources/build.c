@@ -6,7 +6,7 @@
 /*   By: bpisano <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/17 15:32:08 by bpisano           #+#    #+#             */
-/*   Updated: 2017/11/20 14:18:35 by bpisano          ###   ########.fr       */
+/*   Updated: 2017/11/20 16:11:56 by bpisano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int			split_len(char **split)
 	return (i);
 }
 
-void		print_table(int **table)
+void		print_table(char **table)
 {
 	int		i;
 	int		j;
@@ -33,7 +33,7 @@ void		print_table(int **table)
 		j = 0;
 		while (j < 4)
 		{
-			printf("%d", table[i][j]);
+			printf("%c", table[i][j]);
 			j++;
 		}
 		printf("\n");
@@ -53,46 +53,36 @@ void		print_model(t_tetri **mod)
 	}
 }
 
-int			**int_model(char **str)
+char		**char_model(char **str, int index)
 {
 	int 	i;
 	int		j;
-	int		**tetri;
+	char	**tetri;
 
-	if (!(tetri = (int **)malloc(sizeof(int *) * 5)))
+	if (!(tetri = (char **)malloc(sizeof(char *) * 5)))
 		return (NULL);
 	i = 0;
 	while (i < 4)
 	{
 		j = 0;
-		if (!(tetri[i] = (int *)malloc(sizeof(int) * 4)))
+		if (!(tetri[i] = (char *)malloc(sizeof(char) * 5)))
 			return (NULL);
 		while (j < 4)
 		{	
-			tetri[i][j] = str[i][j] == '.' ? 0 : 1;
+			tetri[i][j] = str[i][j] == '.' ? '.' : 'A' + index;
 			j++;
 		}
+		tetri[i][j] = '\0';
 		i++;
 	}
 	tetri[i] = NULL;
 	return (tetri);
 }
 
-t_tetri		*new_tetri(int **tetri_table)
-{
-	t_tetri	*new;
-
-	if (!(new = (t_tetri *)malloc(sizeof(t_tetri))))
-		return (NULL);
-	new->tetri = tetri_table;
-	new->width = 0;
-	new->height = 0;
-	return (new);
-}
-
 t_tetri		**model(char **str, int t_n)
 {
 	int		i;
+	//t_tetri	*tetri;
 	t_tetri	**model;
 
 	if (!(model = (t_tetri **)malloc(sizeof(t_tetri *) * (t_n + 1))))
@@ -100,11 +90,16 @@ t_tetri		**model(char **str, int t_n)
 	i = 0;
 	while (str[i])
 	{
-		if (!(model[i / 4] = new_tetri(int_model(&str[i]))))
+		if (!(model[i] = (t_tetri *)malloc(sizeof(t_tetri))))
 			return (NULL);
+		model[i]->tetri = char_model(&str[i], i / 4);
+		model[i]->width = 0;
+		model[i]->height = 0;
+		//model[i / 4] = tetri;
 		i += 4;
 	}
 	model[i / 4] = NULL;
+	print_model(model);
 	return (model);
 }
 
