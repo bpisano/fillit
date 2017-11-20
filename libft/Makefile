@@ -6,7 +6,7 @@
 #    By: bpisano <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/08 19:19:47 by bpisano           #+#    #+#              #
-#    Updated: 2017/11/15 13:23:26 by bpisano          ###   ########.fr        #
+#    Updated: 2017/11/20 16:06:57 by htaillef         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -109,12 +109,13 @@ END = \033[0m
 
 all: $(NAME)
 
-$(NAME):
+$(NAME): $(OBJECTS)
 	@echo "\n\t$(BLUE)$(NAME)$(END)"
-	@gcc $(FLAGS) -I $(HEADS) -c $(PART1) $(PART2) $(BONUS) $(EXTRA)
-	@echo "\tCompiling sources\t\t$(GREEN)Done$(END)"
 	@ar rc $(NAME) $(OBJECTS)
 	@echo "\tCreating libft.a\t\t$(GREEN)Done$(END)"
+
+%.o : %.c
+		@gcc -I $(HEADS) $(FLAGS) -o $@ -c $<
 
 clean:
 	@echo "\n\t$(BLUE)CLEAN$(END)"
