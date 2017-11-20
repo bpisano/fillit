@@ -9,7 +9,7 @@ Fillit will first verify the input (called **Verification** step), build a model
 ## Read
 Simply call `char *read_file(char *file_name);` to read the content in **file_name**.
 
-##Verify
+## Verify
 Fillit will first verify that the input is correct by checking :
 
  1. if the input contain at least 20 characters
@@ -18,7 +18,7 @@ Fillit will first verify that the input is correct by checking :
 
 This step calls `int input_is_valid(char *str);` to determine if the input is in the correct format.
 
-##Build
+## Build
 This step is used to convert the input to a **t_tetri** structure that contains a 2D array of characters that represent a tetrimino and a *x*, *y*, *width* and *height* property.
 Here is how a t_tetri is declared :
 
@@ -31,6 +31,6 @@ Here is how a t_tetri is declared :
 
 This step calls `t_tetri **build_model(char *str);` to build a list of **t_tetri**. It takes in argument the content of the file read by `read_file`.
 
-##Adjustment
+## Adjustment
 This step setup the *width* and *height* property of each tetrimino. It also center it up left.
 This step calls `void adjust(t_tetri **model);` to adjust the model.
