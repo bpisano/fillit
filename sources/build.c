@@ -6,7 +6,7 @@
 /*   By: bpisano <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/17 15:32:08 by bpisano           #+#    #+#             */
-/*   Updated: 2017/11/20 16:38:02 by bpisano          ###   ########.fr       */
+/*   Updated: 2017/11/20 17:11:57 by bpisano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
  ** Return the len of the split.
 */
 
-int			split_len(char **split)
+static int			split_len(char **split)
 {
 	int		i;
 
@@ -32,7 +32,7 @@ int			split_len(char **split)
  ** Return the char table.
 */
 
-char		**char_model(char **str, int index)
+static char			**char_model(char **str, int index)
 {
 	int		i;
 	int		j;
@@ -63,7 +63,7 @@ char		**char_model(char **str, int index)
  ** Return a list of type t_tetri.
 */
 
-t_tetri		**model(char **str, int t_n)
+static t_tetri		**model(char **str, int t_n)
 {
 	int		i;
 	t_tetri	*tetri;
@@ -91,7 +91,7 @@ t_tetri		**model(char **str, int t_n)
  ** Return the list of tetriminos.
 */
 
-t_tetri		**build_model(char *str)
+t_tetri				**build_model(char *str)
 {
 	char	**split;
 	int		t_n;

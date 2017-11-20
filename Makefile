@@ -6,7 +6,7 @@
 #    By: bpisano <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/16 14:30:17 by bpisano           #+#    #+#              #
-#    Updated: 2017/11/20 16:09:16 by bpisano          ###   ########.fr        #
+#    Updated: 2017/11/20 17:14:04 by bpisano          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,22 +39,18 @@ $(LIB):
 
 $(NAME): $(LIB) $(OBJECTS)
 	@gcc -o $(NAME) $(OBJECTS) libft/$(LIB)
-	@echo "\tCreating $(NAME)\t\t\t$(GREEN)Done$(END)"
 
 %.o : %.c
-	@echo "\n\t$(BLUE)$(NAME)$(END)"
 	@gcc $(FLAGS) -o $@ -c $<
-	@echo "\tCompilings objects\t\t$(GREEN)Done$(END)"
 
 clean:
-	@echo "\n\t$(BLUE)CLEAN$(END)"
 	@rm -rf $(OBJECTS)
-	@echo "\tRemoving objects\t\t$(GREEN)Done$(END)"
+	@(cd libft/ && make clean)
 
 fclean: clean
-	@echo "\n\t$(BLUE)FCLEAN$(END)"
 	@rm -rf $(NAME)
-	@echo "\tRemoving $(NAME)\t\t\t$(GREEN)Done$(END)"
+	@(cd libft/ && make fclean)
 
 re: fclean all
 	@echo "\n\t$(GREEN)All the process is ok$(END)\n"
+	@(cd libft/ && make re)
