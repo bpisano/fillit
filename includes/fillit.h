@@ -6,7 +6,7 @@
 /*   By: bpisano <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/16 14:28:20 by bpisano           #+#    #+#             */
-/*   Updated: 2017/11/20 15:50:21 by htaillef         ###   ########.fr       */
+/*   Updated: 2017/11/20 17:33:38 by htaillef         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include "../libft/libft.h"
 # include <fcntl.h>
 
-# define BUF_SIZE 128
+# define BUF_SIZE 256
 
 typedef struct	s_tetri
 {
