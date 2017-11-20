@@ -6,7 +6,7 @@
 /*   By: bpisano <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/17 15:32:08 by bpisano           #+#    #+#             */
-/*   Updated: 2017/11/20 13:49:41 by bpisano          ###   ########.fr       */
+/*   Updated: 2017/11/20 14:05:41 by bpisano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void		print_table(int **table)
 {
 	int		i;
 	int		j;
-	
+
 	i = 0;
 	while (i < 4)
 	{
@@ -59,26 +59,22 @@ int			**int_model(char **str)
 	int		j;
 	int		**tetri;
 
-	(void)str;
 	if (!(tetri = (int **)malloc(sizeof(int *) * 5)))
 		return (NULL);
 	i = 0;
 	while (i < 4)
 	{
 		j = 0;
+		if (!(tetri[i] = (int *)malloc(sizeof(int) * 4)))
+			return (NULL);
 		while (j < 4)
-		{
-			if (!(tetri[i] = (int *)malloc(sizeof(int) * 4)))
-				return (NULL);
-			tetri[i][j] = 2/*str[i][j] == '.' ? 1 : 0*/;
-			//printf("%c", str[i][j]);
+		{	
+			tetri[i][j] = str[i][j] == '.' ? 0 : 1;
 			j++;
 		}
-		//printf("\n");
 		i++;
 	}
-	//tetri[i] = NULL;
-	print_table(tetri);
+	tetri[i] = NULL;
 	return (tetri);
 }
 
@@ -93,17 +89,16 @@ t_tetri		**model(char **str)
 	i = 0;
 	while (str[i])
 	{
+		ft_putnbr(i);
 		if (!(tetri = (t_tetri *)malloc(sizeof(t_tetri))))
 			return (NULL);
 		tetri->tetri = int_model(&str[i]);
-		//print_table(tetri->tetri);
 		tetri->width = 0;
 		tetri->height = 0;
-		model[(i / 4) - 1] = tetri;
+		model[i / 4] = tetri;
 		i += 4;
-		printf("\n");
 	}
-	model[(i / 4) - 1] = NULL;
+	model[i / 4] = NULL;
 	return (model);
 }
 
