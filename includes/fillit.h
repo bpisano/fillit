@@ -6,7 +6,7 @@
 /*   By: bpisano <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/16 14:28:20 by bpisano           #+#    #+#             */
-/*   Updated: 2017/11/20 13:40:08 by htaillef         ###   ########.fr       */
+/*   Updated: 2017/11/20 13:44:39 by bpisano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,6 @@ typedef struct	s_tetri
 
 char			*read_file(char *file_name);
 int				input_is_valid(char *str);
-t_tetri			**build_model(char *str, int *size);
+t_tetri			**build_model(char *str);
 int				model_is_valid(t_tetri **models);
 #endif
