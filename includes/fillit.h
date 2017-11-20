@@ -6,7 +6,7 @@
 /*   By: bpisano <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/16 14:28:20 by bpisano           #+#    #+#             */
-/*   Updated: 2017/11/20 17:33:38 by htaillef         ###   ########.fr       */
+/*   Updated: 2017/11/20 20:13:33 by bpisano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,4 +29,5 @@ char			*read_file(char *file_name);
 int				input_is_valid(char *str);
 t_tetri			**build_model(char *str);
 int				model_is_valid(t_tetri **models);
+void			adjust(t_tetri **model);
 #endif

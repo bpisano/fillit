@@ -6,7 +6,7 @@
 #    By: bpisano <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/16 14:30:17 by bpisano           #+#    #+#              #
-#    Updated: 2017/11/20 17:14:04 by bpisano          ###   ########.fr        #
+#    Updated: 2017/11/20 19:31:26 by bpisano          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,6 +17,7 @@ SRC = ./sources/main.c			\
 	  ./sources/input_verify.c	\
 	  ./sources/build.c			\
 	  ./sources/model_verify.c	\
+	  ./sources/adjustments.c	\
 
 OBJECTS = $(SRC:.c=.o)
 
