@@ -6,7 +6,7 @@
 /*   By: bpisano <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/17 15:32:08 by bpisano           #+#    #+#             */
-/*   Updated: 2017/11/20 13:43:36 by bpisano          ###   ########.fr       */
+/*   Updated: 2017/11/20 13:49:41 by bpisano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ int			**int_model(char **str)
 		{
 			if (!(tetri[i] = (int *)malloc(sizeof(int) * 4)))
 				return (NULL);
-			tetri[0][j] = 2/*str[i][j] == '.' ? 1 : 0*/;
+			tetri[i][j] = 2/*str[i][j] == '.' ? 1 : 0*/;
 			//printf("%c", str[i][j]);
 			j++;
 		}
@@ -103,7 +103,7 @@ t_tetri		**model(char **str)
 		i += 4;
 		printf("\n");
 	}
-	model[(i / 4) -1] = NULL;
+	model[(i / 4) - 1] = NULL;
 	return (model);
 }
 
@@ -114,7 +114,7 @@ t_tetri		**build_model(char *str)
 	t_tetri	**t_model;
 
 	split = ft_strsplit(str, '\n');
-	t_n = split_len(split) % 4;
+	t_n = split_len(split) / 4;
 	if (!(t_model = (t_tetri **)malloc(sizeof(t_tetri *) * (t_n + 1))))
 		return (NULL);
 	t_model = model(split);
