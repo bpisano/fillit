@@ -6,7 +6,7 @@
 #    By: bpisano <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/16 14:30:17 by bpisano           #+#    #+#              #
-#    Updated: 2017/11/20 11:50:14 by bpisano          ###   ########.fr        #
+#    Updated: 2017/11/20 16:09:16 by bpisano          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,8 +35,7 @@ END = \033[0m
 all: $(NAME)
 
 $(LIB):
-	@(cd libft/ && make re)
-	@(cd libft/ && make clean)
+	@(cd libft/ && make)
 
 $(NAME): $(LIB) $(OBJECTS)
 	@gcc -o $(NAME) $(OBJECTS) libft/$(LIB)
