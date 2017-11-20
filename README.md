@@ -25,8 +25,8 @@ Here is how a t_tetri is declared :
     typedef struct	s_tetri
     {
     	char    **tetri;
-    	int			         width;
-    	int			         height;
+    	int     width;
+    	int     height;
     }               t_tetri;
 
 This step calls `t_tetri **build_model(char *str);` to build a list of **t_tetri**. It takes in argument the content of the file read by `read_file`.
