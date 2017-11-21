@@ -6,7 +6,7 @@
 /*   By: bpisano <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/17 15:32:08 by bpisano           #+#    #+#             */
-/*   Updated: 2017/11/21 17:49:27 by bpisano          ###   ########.fr       */
+/*   Updated: 2017/11/21 17:56:51 by htaillef         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,8 @@ static t_list		*model(char **str)
 		tetri->width = 0;
 		tetri->height = 0;
 		ft_lst_push_back(&model, ft_lstnew(tetri, sizeof(tetri)));
+		free(tetri);
+		tetri = NULL;
 		i += 4;
 	}
 	return (model);
