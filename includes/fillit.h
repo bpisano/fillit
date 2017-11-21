@@ -6,7 +6,7 @@
 /*   By: bpisano <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/16 14:28:20 by bpisano           #+#    #+#             */
-/*   Updated: 2017/11/21 17:37:58 by htaillef         ###   ########.fr       */
+/*   Updated: 2017/11/21 17:46:18 by bpisano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,4 +37,5 @@ int				input_is_valid(char *str);
 t_list			*build_model(char *str);
 int				model_is_valid(t_list **models);
 void			adjust(t_list **model);
+t_map			*build_map(t_list **model);
 #endif

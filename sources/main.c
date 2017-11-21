@@ -6,16 +6,17 @@
 /*   By: bpisano <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/16 17:14:27 by bpisano           #+#    #+#             */
-/*   Updated: 2017/11/21 17:38:58 by htaillef         ###   ########.fr       */
+/*   Updated: 2017/11/21 17:47:14 by bpisano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fillit.h"
-
+#include <stdio.h>
 int		main(int ac, char **av)
 {
 	char	*input;
 	t_list	*model;
+	t_map	*map;
 
 	if (ac != 2)
 	{
@@ -35,5 +36,7 @@ int		main(int ac, char **av)
 		return (0);
 	}
 	adjust(&model);
+	map = build_map(&model);
+	printf("%d", map->size);
 	return (0);
 }

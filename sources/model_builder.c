@@ -6,26 +6,11 @@
 /*   By: bpisano <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/17 15:32:08 by bpisano           #+#    #+#             */
-/*   Updated: 2017/11/21 17:37:33 by htaillef         ###   ########.fr       */
+/*   Updated: 2017/11/21 17:49:27 by bpisano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fillit.h"
-
-/*
- ** Calculate the len of the input splited.
- ** Return the len of the split.
-*/
-
-/*static int			split_len(char **split)
-{
-	int		i;
-
-	i = 0;
-	while (split[i])
-		i++;
-	return (i);
-}*/
 
 /*
  ** Create a char table with the correct letter of the str passed in parameters.
@@ -63,7 +48,7 @@ static char			**char_model(char **str, int index)
  ** Return a list of type t_tetri.
 */
 
-static t_list		*model(char **str/*, int t_n*/)
+static t_list		*model(char **str)
 {
 	int		i;
 	t_tetri	*tetri;

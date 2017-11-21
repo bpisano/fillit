@@ -6,7 +6,7 @@
 /*   By: bpisano <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/20 19:18:53 by bpisano           #+#    #+#             */
-/*   Updated: 2017/11/21 16:32:21 by htaillef         ###   ########.fr       */
+/*   Updated: 2017/11/21 17:49:42 by bpisano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ void	adjust(t_list **model)
 		tetri = (t_tetri *)iterator->content;
 		tetri->width = width(tetri->tetri);
 		tetri->height = height(tetri->tetri);
-		printf("%d, %d", tetri->width, tetri->height);
+		printf("%d, %d\n", tetri->width, tetri->height);
 		iterator = iterator->next;
 	}
 }
