@@ -6,7 +6,7 @@
 #    By: bpisano <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/16 14:30:17 by bpisano           #+#    #+#              #
-#    Updated: 2017/11/21 17:21:18 by htaillef         ###   ########.fr        #
+#    Updated: 2017/11/21 17:26:31 by bpisano          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,9 +15,10 @@ NAME = fillit
 SRC = ./sources/main.c			\
 	  ./sources/read_file.c		\
 	  ./sources/input_verify.c	\
-	  ./sources/model_builder.c			\
+	  ./sources/model_builder.c	\
 	  ./sources/model_verify.c	\
 	  ./sources/adjustments.c	\
+	  ./sources/map_builder.c	\
 
 OBJECTS = $(SRC:.c=.o)
 
@@ -25,7 +26,7 @@ LIB = libft.a
 
 HEADS = ./includes
 
-FLAGS = -Wall -Werror -Wextra -fsanitize=address
+FLAGS = -Wall -Werror -Wextra
 
 RED = \033[0;31m
 GREEN = \033[0;32m
