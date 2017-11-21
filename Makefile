@@ -6,7 +6,7 @@
 #    By: bpisano <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/16 14:30:17 by bpisano           #+#    #+#              #
-#    Updated: 2017/11/21 16:21:52 by htaillef         ###   ########.fr        #
+#    Updated: 2017/11/21 17:21:18 by htaillef         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,7 @@ LIB = libft.a
 
 HEADS = ./includes
 
-FLAGS = -Wall -Werror -Wextra
+FLAGS = -Wall -Werror -Wextra -fsanitize=address
 
 RED = \033[0;31m
 GREEN = \033[0;32m
