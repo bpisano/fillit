@@ -6,7 +6,7 @@
 #    By: bpisano <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/08 19:19:47 by bpisano           #+#    #+#              #
-#    Updated: 2017/11/21 16:05:44 by htaillef         ###   ########.fr        #
+#    Updated: 2017/11/21 16:36:00 by bpisano          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -73,7 +73,8 @@ BONUS = ft_lstnew.c				\
 		ft_lstiter.c			\
 		ft_lstmap.c
 
-EXTRA = ft_isblank.c			\
+EXTRA = ft_sqrt.c				\
+		ft_isblank.c			\
 		ft_iscntrl.c			\
 		ft_isgraph.c			\
 		ft_islower.c			\
