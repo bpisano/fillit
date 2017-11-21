@@ -6,7 +6,7 @@
 /*   By: bpisano <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/16 14:28:20 by bpisano           #+#    #+#             */
-/*   Updated: 2017/11/21 16:21:33 by htaillef         ###   ########.fr       */
+/*   Updated: 2017/11/21 16:50:21 by bpisano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,7 @@ typedef struct	s_tetri
 typedef struct	s_map
 {
 	char		**map;
-	int			width;
-	int			height;
+	int			size;
 }				t_map;
 
 char			*read_file(char *file_name);
