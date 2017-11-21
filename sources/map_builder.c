@@ -6,7 +6,7 @@
 /*   By: bpisano <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/21 16:15:48 by bpisano           #+#    #+#             */
-/*   Updated: 2017/11/21 17:26:02 by bpisano          ###   ########.fr       */
+/*   Updated: 2017/11/21 18:16:13 by bpisano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,20 +18,20 @@ static int		smaller_square(t_list **model)
 	t_tetri			*tetri;
 	unsigned int	width_sum;
 	unsigned int	height_sum;
-	unsigned int	max;
+	unsigned int	total;
 
 	current = *model;
 	width_sum = 0;
 	height_sum = 0;
 	while (current)
 	{
-		tetri = current->content;
+		tetri = (t_tetri *)(current->content);
 		width_sum += (unsigned int)(tetri->width);
 		height_sum += (unsigned int)(tetri->height);
 		current = current->next;
 	}
-	max = width_sum > height_sum ? width_sum : height_sum;
-	return (ft_sqrt(max));
+	total = width_sum + height_sum;
+	return (ft_sqrt(total));
 }
 
 static t_map	*map(int size)
@@ -45,8 +45,8 @@ static t_map	*map(int size)
 		return (NULL);
 	if (!(map_str = (char **)malloc(sizeof(char *) * (size + 1))))
 		return (NULL);
-	i = 0;
-	while (i < size)
+	i = -1;
+	while (++i < size)
 	{
 		j = 0;
 		while (j < size)
