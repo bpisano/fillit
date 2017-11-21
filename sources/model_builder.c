@@ -6,7 +6,7 @@
 /*   By: bpisano <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/17 15:32:08 by bpisano           #+#    #+#             */
-/*   Updated: 2017/11/20 17:11:57 by bpisano          ###   ########.fr       */
+/*   Updated: 2017/11/21 16:25:52 by htaillef         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
  ** Return the len of the split.
 */
 
-static int			split_len(char **split)
+/*static int			split_len(char **split)
 {
 	int		i;
 
@@ -25,7 +25,7 @@ static int			split_len(char **split)
 	while (split[i])
 		i++;
 	return (i);
-}
+}*/
 
 /*
  ** Create a char table with the correct letter of the str passed in parameters.
@@ -63,14 +63,13 @@ static char			**char_model(char **str, int index)
  ** Return a list of type t_tetri.
 */
 
-static t_tetri		**model(char **str, int t_n)
+static t_list		**model(char **str/*, int t_n*/)
 {
 	int		i;
 	t_tetri	*tetri;
-	t_tetri	**model;
+	t_list	**model;
 
-	if (!(model = (t_tetri **)malloc(sizeof(t_tetri *) * (t_n + 1))))
-		return (NULL);
+	model = NULL;
 	i = 0;
 	while (str[i])
 	{
@@ -79,10 +78,9 @@ static t_tetri		**model(char **str, int t_n)
 		tetri->tetri = char_model(&str[i], i / 4);
 		tetri->width = 0;
 		tetri->height = 0;
-		model[i / 4] = tetri;
+		ft_lst_push_back(model, ft_lstnew(tetri, sizeof(tetri)));
 		i += 4;
 	}
-	model[i / 4] = NULL;
 	return (model);
 }
 
@@ -91,16 +89,12 @@ static t_tetri		**model(char **str, int t_n)
  ** Return the list of tetriminos.
 */
 
-t_tetri				**build_model(char *str)
+t_list				**build_model(char *str)
 {
 	char	**split;
-	int		t_n;
-	t_tetri	**t_model;
+	//int		t_n;
 
 	split = ft_strsplit(str, '\n');
-	t_n = split_len(split) / 4;
-	if (!(t_model = (t_tetri **)malloc(sizeof(t_tetri *) * (t_n + 1))))
-		return (NULL);
-	t_model = model(split, t_n);
-	return (t_model);
+	//t_n = split_len(split) / 4;
+	return (model(split/*, t_n*/));
 }

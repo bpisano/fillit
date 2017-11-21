@@ -6,7 +6,7 @@
 /*   By: htaillef <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/16 17:30:34 by htaillef          #+#    #+#             */
-/*   Updated: 2017/11/20 17:15:04 by bpisano          ###   ########.fr       */
+/*   Updated: 2017/11/21 16:28:15 by htaillef         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,18 +90,18 @@ static int	check_model(t_tetri *model)
  ** Return 1 if all are valid, else 0.
 */
 
-int		model_is_valid(t_tetri **models)
+int		model_is_valid(t_list **models)
 {
-	int		i;
+	t_list *iterator;
 
 	if (!(*models))
 		return (0);
-	i = 0;
-	while (models[i])
+	iterator = *models;
+	while (iterator)
 	{
-		if (!check_model(models[i]))
+		if (!check_model((t_tetri *)iterator->content))
 			return (0);
-		i++;
+		iterator = iterator->next;
 	}
 	return (1);
 }

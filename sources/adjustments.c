@@ -6,7 +6,7 @@
 /*   By: bpisano <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/20 19:18:53 by bpisano           #+#    #+#             */
-/*   Updated: 2017/11/20 19:42:34 by bpisano          ###   ########.fr       */
+/*   Updated: 2017/11/21 16:32:21 by htaillef         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int		width(char **tetri)
 	int		width;
 	int		max_width;
 
-	y = 0;	
+	y = 0;
 	max_width = 0;
 	while (tetri[y])
 	{
@@ -45,7 +45,7 @@ int		height(char **tetri)
 	int		height;
 	int		max_height;
 
-	x = 0;	
+	x = 0;
 	max_height = 0;
 	while (x < 4)
 	{
@@ -64,16 +64,20 @@ int		height(char **tetri)
 	return (max_height);
 }
 
-void	adjust(t_tetri **model)
+void	adjust(t_list **model)
 {
-	int		i;
+	t_list	*iterator;
+	t_tetri	*tetri;
 
-	i = 0;
-	while (model[i])
+	iterator = (*model);
+	if (!iterator)
+		return ;
+	while (iterator)
 	{
-		model[i]->width = width(model[i]->tetri);
-		model[i]->height = height(model[i]->tetri);
-		printf("%d, %d", model[i]->width, model[i]->height);
-		i++;
+		tetri = (t_tetri *)iterator->content;
+		tetri->width = width(tetri->tetri);
+		tetri->height = height(tetri->tetri);
+		printf("%d, %d", tetri->width, tetri->height);
+		iterator = iterator->next;
 	}
 }

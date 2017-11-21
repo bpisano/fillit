@@ -6,7 +6,7 @@
 /*   By: bpisano <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/16 17:14:27 by bpisano           #+#    #+#             */
-/*   Updated: 2017/11/20 19:34:19 by bpisano          ###   ########.fr       */
+/*   Updated: 2017/11/21 16:20:40 by htaillef         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int		main(int ac, char **av)
 {
 	char	*input;
-	t_tetri	**model;
+	t_list	**model;
 
 	if (ac != 2)
 	{
