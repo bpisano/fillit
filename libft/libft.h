@@ -6,7 +6,7 @@
 /*   By: bpisano <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/07 18:31:27 by bpisano           #+#    #+#             */
-/*   Updated: 2017/11/13 19:16:50 by bpisano          ###   ########.fr       */
+/*   Updated: 2017/11/21 16:06:25 by htaillef         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,4 +106,5 @@ char				*ft_strlowcase(char *s);
 char				*ft_strndup(char const *s, size_t n);
 int					ft_strncasecmp(char const *s1, char const *s2, size_t n);
 char				*ft_strupcase(char *s);
+void				ft_lst_push_back(t_list **lst, t_list *new);
 #endif
