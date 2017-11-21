@@ -6,7 +6,7 @@
 /*   By: bpisano <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/21 16:15:48 by bpisano           #+#    #+#             */
-/*   Updated: 2017/11/21 18:16:13 by bpisano          ###   ########.fr       */
+/*   Updated: 2017/11/21 18:19:32 by bpisano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,6 @@ static t_map	*map(int size)
 			j++;
 		}
 		map_str[i][j] = '\0';
-		i++;
 	}
 	map_str[i] = NULL;
 	map->map = map_str;

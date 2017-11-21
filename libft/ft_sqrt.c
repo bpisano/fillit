@@ -6,7 +6,7 @@
 /*   By: bpisano <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/21 16:25:54 by bpisano           #+#    #+#             */
-/*   Updated: 2017/11/21 16:36:20 by bpisano          ###   ########.fr       */
+/*   Updated: 2017/11/21 18:18:54 by bpisano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int		ft_sqrt(unsigned int n)
 {
 	unsigned int	sqrt;
-	
+
 	sqrt = 0;
 	while (sqrt * sqrt < n)
 		sqrt++;
