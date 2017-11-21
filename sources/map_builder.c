@@ -15,22 +15,14 @@
 static int		smaller_square(t_list **model)
 {
 	t_list			*current;
-	t_tetri			*tetri;
-	unsigned int	width_sum;
-	unsigned int	height_sum;
-	unsigned int	total;
+	unsigned int		total;
 
 	current = *model;
-	width_sum = 0;
-	height_sum = 0;
 	while (current)
 	{
-		tetri = (t_tetri *)(current->content);
-		width_sum += (unsigned int)(tetri->width);
-		height_sum += (unsigned int)(tetri->height);
+		total += 4;
 		current = current->next;
 	}
-	total = width_sum + height_sum;
 	return (ft_sqrt(total));
 }
 
