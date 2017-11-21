@@ -6,7 +6,7 @@
 /*   By: bpisano <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/16 14:28:20 by bpisano           #+#    #+#             */
-/*   Updated: 2017/11/21 16:50:21 by bpisano          ###   ########.fr       */
+/*   Updated: 2017/11/21 17:37:58 by htaillef         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ typedef struct	s_map
 
 char			*read_file(char *file_name);
 int				input_is_valid(char *str);
-t_list			**build_model(char *str);
+t_list			*build_model(char *str);
 int				model_is_valid(t_list **models);
 void			adjust(t_list **model);
 #endif

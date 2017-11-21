@@ -6,7 +6,7 @@
 /*   By: bpisano <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/17 15:32:08 by bpisano           #+#    #+#             */
-/*   Updated: 2017/11/21 16:25:52 by htaillef         ###   ########.fr       */
+/*   Updated: 2017/11/21 17:37:33 by htaillef         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,11 +63,11 @@ static char			**char_model(char **str, int index)
  ** Return a list of type t_tetri.
 */
 
-static t_list		**model(char **str/*, int t_n*/)
+static t_list		*model(char **str/*, int t_n*/)
 {
 	int		i;
 	t_tetri	*tetri;
-	t_list	**model;
+	t_list	*model;
 
 	model = NULL;
 	i = 0;
@@ -78,7 +78,7 @@ static t_list		**model(char **str/*, int t_n*/)
 		tetri->tetri = char_model(&str[i], i / 4);
 		tetri->width = 0;
 		tetri->height = 0;
-		ft_lst_push_back(model, ft_lstnew(tetri, sizeof(tetri)));
+		ft_lst_push_back(&model, ft_lstnew(tetri, sizeof(tetri)));
 		i += 4;
 	}
 	return (model);
@@ -89,12 +89,10 @@ static t_list		**model(char **str/*, int t_n*/)
  ** Return the list of tetriminos.
 */
 
-t_list				**build_model(char *str)
+t_list				*build_model(char *str)
 {
 	char	**split;
-	//int		t_n;
 
 	split = ft_strsplit(str, '\n');
-	//t_n = split_len(split) / 4;
-	return (model(split/*, t_n*/));
+	return (model(split));
 }
