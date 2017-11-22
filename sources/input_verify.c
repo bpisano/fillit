@@ -6,7 +6,7 @@
 /*   By: bpisano <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/16 17:33:56 by bpisano           #+#    #+#             */
-/*   Updated: 2017/11/20 16:30:03 by bpisano          ###   ########.fr       */
+/*   Updated: 2017/11/22 17:13:09 by bpisano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,26 +91,24 @@ static int	char_per_line_is_valid(char *str)
 static int	lines_per_tetri_is_valid(char *str)
 {
 	int		i;
-	int		line_index;
-	int		offset;
+	int		lines;
 
 	if (str[0] == '\n' || (str[ft_strlen(str) - 1] != '\n' &&
 				str[ft_strlen(str) - 2] != '\n'))
 		return (0);
-	i = 5;
-	line_index = 1;
+	i = 0;
+	lines = 0;
 	while (str[i])
 	{
-		offset = (line_index / 4) - 1 < 0 ? 0 : (line_index / 4) - 1;
-		if (!(line_len(&str[i]) == 0 && (line_index - offset) % 4 == 0) &&
-				!(line_len(&str[i]) == 4 && (line_index - offset) % 4 != 0))
-		{
+		if (line_len(&str[i]) == 4)
+			lines++;
+		else if (line_len(&str[i]) == 0 && lines == 4)
+			lines = 0;
+		else
 			return (0);
-		}
-		line_index++;
 		i += line_len(&str[i]) + 1;
 	}
-	return ((line_index - offset) % 4 == 0);
+	return (lines == 4);
 }
 
 /*
