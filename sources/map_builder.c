@@ -6,7 +6,7 @@
 /*   By: bpisano <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/21 16:15:48 by bpisano           #+#    #+#             */
-/*   Updated: 2017/11/21 18:19:32 by bpisano          ###   ########.fr       */
+/*   Updated: 2017/11/22 12:35:09 by bpisano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ static int		smaller_square(t_list **model)
 	unsigned int		total;
 
 	current = *model;
+	total = 0;
 	while (current)
 	{
 		total += 4;
