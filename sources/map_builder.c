@@ -6,7 +6,7 @@
 /*   By: bpisano <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/21 16:15:48 by bpisano           #+#    #+#             */
-/*   Updated: 2017/11/22 12:35:09 by bpisano          ###   ########.fr       */
+/*   Updated: 2017/11/22 19:19:21 by bpisano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,10 +42,10 @@ static t_map	*map(int size)
 	while (++i < size)
 	{
 		j = 0;
+		if (!(map_str[i] = (char *)malloc(sizeof(char) * (size + 1))))
+			return (NULL);
 		while (j < size)
-		{
-			if (!(map_str[i] = (char *)malloc(sizeof(char) * (size + 1))))
-				return (NULL);
+		{	
 			map_str[i][j] = '.';
 			j++;
 		}
@@ -64,5 +64,7 @@ t_map			*build_map(t_list **model)
 	min_square = smaller_square(model);
 	new_map = map(min_square);
 	new_map->size = min_square;
+	new_map->todo = *model;
+	new_map->placed = NULL;
 	return (new_map);
 }

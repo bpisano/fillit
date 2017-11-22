@@ -6,7 +6,7 @@
 /*   By: bpisano <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/16 17:14:27 by bpisano           #+#    #+#             */
-/*   Updated: 2017/11/21 17:47:14 by bpisano          ###   ########.fr       */
+/*   Updated: 2017/11/22 19:04:25 by bpisano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,6 @@ int		main(int ac, char **av)
 	}
 	adjust(&model);
 	map = build_map(&model);
-	printf("%d", map->size);
+	solve(map);
 	return (0);
 }
