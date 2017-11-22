@@ -6,7 +6,7 @@
 /*   By: bpisano <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/20 19:18:53 by bpisano           #+#    #+#             */
-/*   Updated: 2017/11/21 17:57:13 by bpisano          ###   ########.fr       */
+/*   Updated: 2017/11/22 17:32:39 by htaillef         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,54 +14,54 @@
 
 int		width(char **tetri)
 {
-	int		x;
-	int		y;
-	int		width;
-	int		max_width;
+	int		max_x;
+	int		min_x;
+	int		max_y;
+	int		min_y;
 
-	y = 0;
-	max_width = 0;
-	while (tetri[y])
-	{
-		x = 0;
-		width = 0;
-		while (tetri[y][x])
-		{
-			if (tetri[y][x] != '.')
-				width++;
-			x++;
-		}
-		if (width > max_width)
-			max_width = width;
-		y++;
-	}
-	return (max_width);
+	set_max_pos(tetri, &max_x, &max_y);
+	set_min_pos(tetri, &min_x, &min_y);
+	return (max_y + 1 - min_y);
 }
 
 int		height(char **tetri)
 {
+	int		max_x;
+	int		min_x;
+	int		max_y;
+	int		min_y;
+
+	set_max_pos(tetri, &max_x, &max_y);
+	set_min_pos(tetri, &min_x, &min_y);
+	return (max_x + 1 - min_x);
+}
+
+char	**resize(t_tetri *tetri)
+{
+	int		min_x;
+	int		min_y;
+	char	**res;
 	int		x;
 	int		y;
-	int		height;
-	int		max_height;
 
-	x = 0;
-	max_height = 0;
-	while (x < 4)
+	if (!tetri)
+		return (NULL);
+	if (!(res = (char **)ft_memalloc(sizeof(char *) * (tetri->height + 1))))
+		return (NULL);
+	set_min_pos(tetri->tetri, &min_x, &min_y);
+	x = min_x - 1;
+	while (++x < min_x + tetri->height)
 	{
-		y = 0;
-		height = 0;
-		while (y < 4)
-		{
-			if (tetri[y][x] != '.')
-				height++;
-			y++;
-		}
-		if (height > max_height)
-			max_height = height;
-		x++;
+		res[x - min_x] = (char *)ft_memalloc(sizeof(char) * (tetri->width + 1));
+		if (!res[x - min_x])
+			return (NULL);
+		y = min_y - 1;
+		while (++y < min_y + tetri->width)
+			res[x - min_x][y - min_y] = tetri->tetri[x][y];
+		res[x - min_x][y - min_y] = '\0';
 	}
-	return (max_height);
+	res[tetri->height] = NULL;
+	return (res);
 }
 
 void	adjust(t_list **model)
@@ -77,6 +77,7 @@ void	adjust(t_list **model)
 		tetri = (t_tetri *)iterator->content;
 		tetri->width = width(tetri->tetri);
 		tetri->height = height(tetri->tetri);
+		tetri->tetri = resize(tetri);
 		iterator = iterator->next;
 	}
 }
