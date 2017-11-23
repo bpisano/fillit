@@ -1,13 +1,14 @@
 /* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   solve.c                                            :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: bpisano <marvin@42.fr>                     +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/22 17:37:56 by bpisano           #+#    #+#             */
-/*   Updated: 2017/11/22 19:23:51 by bpisano          ###   ########.fr       */
-/*                                                                            */
+/*                                                          LE - /            */
+/*                                                              /             */
+/*   solve.c                                          .::    .:/ .      .::   */
+/*                                                 +:+:+   +:    +:  +:+:+    */
+/*   By: bpisano <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
+/*                                                 #+#   #+    #+    #+#      */
+/*   Created: 2017/11/23 12:11:12 by bpisano      #+#   ##    ##    #+#       */
+/*   Updated: 2017/11/23 14:18:06 by bpisano     ###    #+. /#+    ###.fr     */
+/*                                                         /                  */
+/*                                                        /                   */
 /* ************************************************************************** */
 
 #include "../includes/fillit.h"
@@ -24,6 +25,15 @@ void	print_map(char **map)
 	}
 }
 
+int		out_of_bounds(t_map *map, t_tetri *tetri, int x, int y)
+{
+	if (tetri->width + x > map->size)
+		return (1);
+	if (tetri->height + y > map->size)
+		return (1);
+	return (0);
+}
+
 int		can_put(t_map *map, t_tetri *tetri, int x, int y)
 {
 	int		o_x;
@@ -31,6 +41,8 @@ int		can_put(t_map *map, t_tetri *tetri, int x, int y)
 	int		t_x;
 	int		t_y;
 
+	if (out_of_bounds(map, tetri, x, y))
+		return (0);
 	o_x = x;
 	o_y = y;
 	t_y = 0;
@@ -81,16 +93,16 @@ int		put(t_map *map, t_tetri *tetri, int x, int y)
 
 int		try(t_map *map)
 {
-	int		i;
-	int		x;
-	int		y;
-	t_list	*todo;
-	t_list	*current_t;
+	unsigned int	i;
+	int				x;
+	int				y;
+	t_list			*todo;
+	t_list			*current_t;
 
 	if (!(todo = map->todo))
 		return (1);
 	i = 0;
-	while ((current_t = ft_lstpop(&todo, i)))
+	while ((current_t = ft_lstat(&todo, i)))
 	{
 		y = 0;
 		while (y < map->size)
@@ -100,11 +112,10 @@ int		try(t_map *map)
 			{
 				if (put(map, (t_tetri *)current_t->content, x, y))
 				{
-					ft_lstadd(&map->placed, current_t);
+					ft_lstpopi(&map->todo, i);
 					return(try(map));
 				}
 				x++;
-				// Remmettre au bon index
 			}
 			y++;
 		}
@@ -115,8 +126,16 @@ int		try(t_map *map)
 
 void	solve(t_map *map)
 {
-	put(map, (t_tetri *)((map->todo)->content), 0, 0);
-	ft_lstpop(&map->todo, 0);
-	put(map, (t_tetri *)((map->todo)->content), 1, 0);
-	print_map(map->map);
+	t_list	initial_todo;
+
+	initial_todo = *map->todo;
+	while (!try(map))
+	{
+		//print_map(map->map);
+		//printf("\n");
+		map->todo = &initial_todo;
+		map->size++;
+		map->map = char_map(map->size);	
+	}
+	print_map(map->map);	
 }

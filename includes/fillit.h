@@ -1,13 +1,14 @@
 /* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   fillit.h                                           :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: bpisano <marvin@42.fr>                     +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/16 14:28:20 by bpisano           #+#    #+#             */
-/*   Updated: 2017/11/22 19:14:57 by bpisano          ###   ########.fr       */
-/*                                                                            */
+/*                                                          LE - /            */
+/*                                                              /             */
+/*   fillit.h                                         .::    .:/ .      .::   */
+/*                                                 +:+:+   +:    +:  +:+:+    */
+/*   By: bpisano <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
+/*                                                 #+#   #+    #+    #+#      */
+/*   Created: 2017/11/23 12:13:30 by bpisano      #+#   ##    ##    #+#       */
+/*   Updated: 2017/11/23 14:12:25 by bpisano     ###    #+. /#+    ###.fr     */
+/*                                                         /                  */
+/*                                                        /                   */
 /* ************************************************************************** */
 
 #ifndef FILLIT_H
@@ -33,7 +34,6 @@ typedef struct	s_map
 	char		**map;
 	int			size;
 	t_list		*todo;
-	t_list		*placed;
 }				t_map;
 
 char			*read_file(char *file_name);
@@ -42,6 +42,7 @@ t_list			*build_model(char *str);
 int				model_is_valid(t_list **models);
 void			adjust(t_list **model);
 t_map			*build_map(t_list **model);
+char			**char_map(int size);
 void			set_min_pos(char **tetri, int *min_x, int *min_y);
 void			set_max_pos(char **tetri, int *max_x, int *max_y);
 void			solve(t_map *map);
