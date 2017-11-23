@@ -6,7 +6,7 @@
 /*   By: bpisano <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2017/11/23 12:11:12 by bpisano      #+#   ##    ##    #+#       */
-/*   Updated: 2017/11/23 18:26:31 by bpisano     ###    #+. /#+    ###.fr     */
+/*   Updated: 2017/11/23 19:37:11 by bpisano     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -22,19 +22,6 @@ void	print_map(char **map)
 	{
 		ft_putendl(map[i]);
 		i++;
-	}
-}
-
-void	print_list(t_list **lst)
-{
-	t_list	*current;
-
-	current = *lst;
-	while (current)
-	{
-		print_map(((t_tetri *)(current->content))->tetri);
-		printf("\n");
-		current = current->next;
 	}
 }
 
@@ -133,45 +120,32 @@ void	remove_t(t_map *map, t_tetri *tetri, int x, int y)
 
 int		try(t_map *map, int deep)
 {
-	unsigned int	i;
 	int				x;
 	int				y;
 	t_list			*current_t;
 
 	if (!(map->todo))
 		return (1);
-	i = 0;
-	while ((current_t = ft_lstpopi(&(map->todo), i)))
+	if (!(current_t = ft_lstpopi(&(map->todo), 0)))
+		return (0);
+	y = 0;
+	while (y < map->size)
 	{
-		y = 0;
-		while (y < map->size)
+		x = 0;
+		while (x < map->size)
 		{
-			x = 0;
-			while (x < map->size)
-			{
-				if (put(map, (t_tetri *)current_t->content, x, y))
-				{
-					printf("DEEP : %d\n", deep);
-					print_map(map->map);
-					printf("\n");
-					if (try(map, deep + 1))
-						return (1);
-					else
-						remove_t(map, (t_tetri *)(current_t->content), x, y);
-				}
-				if (((t_tetri *)(current_t->content))->width > 1)
-					x += ((t_tetri *)(current_t->content))->width - 1;
+			if (put(map, (t_tetri *)current_t->content, x, y))
+			{	
+				if (try(map, deep + 1))
+					return (1);
 				else
-					x++;
-			}
-			if (((t_tetri *)(current_t->content))->height > 1)
-				y += ((t_tetri *)(current_t->content))->height - 1;
-			else
-				y++;
+					remove_t(map, (t_tetri *)(current_t->content), x, y);
+			}	
+			x++;
 		}
-		ft_lstaddi(&(map->todo), current_t, i);
-		i++;
+		y++;
 	}
+	ft_lstaddi(&(map->todo), current_t, 0);
 	return (0);
 }
 
@@ -182,13 +156,9 @@ void	solve(t_map *map)
 	initial_todo = *map->todo;
 	while (!try(map, 0))
 	{
-		printf("\n\n\n\n---------------------------------------\n");
-		//print_map(map->map);
-		//printf("\n");
 		map->todo = &initial_todo;
 		map->size++;
 		map->map = char_map(map->size);	
 	}
-	//printf("FINAL\n");
 	print_map(map->map);	
 }
