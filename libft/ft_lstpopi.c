@@ -6,13 +6,13 @@
 /*   By: bpisano <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2017/11/23 12:39:29 by bpisano      #+#   ##    ##    #+#       */
-/*   Updated: 2017/11/23 13:08:44 by bpisano     ###    #+. /#+    ###.fr     */
+/*   Updated: 2017/11/23 17:09:16 by bpisano     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "libft.h"
-
+#include <stdio.h>
 t_list	*ft_lstpopi(t_list **lst, unsigned int index)
 {
 	unsigned int	i;
@@ -24,15 +24,15 @@ t_list	*ft_lstpopi(t_list **lst, unsigned int index)
 	i = 0;
 	current = *lst;
 	previous = NULL;
-	while (i < index)
+	while (current && i < index)
 	{
-		if (!current)
-			return (NULL);
 		previous = current;
 		current = current->next;
 		i++;
 	}
-	if (!previous)
+	if (!current)
+		return (NULL);
+	else if (!previous)
 		*lst = current->next;
 	else
 		previous->next = current->next;
