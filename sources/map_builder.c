@@ -6,17 +6,22 @@
 /*   By: bpisano <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2017/11/23 12:12:31 by bpisano      #+#   ##    ##    #+#       */
-/*   Updated: 2017/11/23 17:01:51 by bpisano     ###    #+. /#+    ###.fr     */
+/*   Updated: 2017/11/24 13:17:45 by htaillef    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "../includes/fillit.h"
 
+/*
+ ** Find the smaller square size from the model.
+ ** Return the smaller square size.
+*/
+
 static int		smaller_square(t_list **model)
 {
 	t_list			*current;
-	unsigned int		total;
+	unsigned int	total;
 
 	current = *model;
 	total = 0;
@@ -28,12 +33,17 @@ static int		smaller_square(t_list **model)
 	return (ft_sqrt(total));
 }
 
+/*
+ ** Initializes a new empty size square.
+ ** Return the new empty map.
+*/
+
 char			**char_map(int size)
 {
 	char	**map_str;
 	int		i;
 	int		j;
-	
+
 	if (!(map_str = (char **)malloc(sizeof(char *) * (size + 1))))
 		return (NULL);
 	i = -1;
@@ -43,7 +53,7 @@ char			**char_map(int size)
 		if (!(map_str[i] = (char *)malloc(sizeof(char) * (size + 1))))
 			return (NULL);
 		while (j < size)
-		{	
+		{
 			map_str[i][j] = '.';
 			j++;
 		}
@@ -52,6 +62,11 @@ char			**char_map(int size)
 	map_str[i] = NULL;
 	return (map_str);
 }
+
+/*
+ ** Initializes a new map object from model.
+ ** Return the new map object.
+*/
 
 t_map			*build_map(t_list **model)
 {

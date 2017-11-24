@@ -6,33 +6,12 @@
 /*   By: bpisano <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2017/11/23 12:11:12 by bpisano      #+#   ##    ##    #+#       */
-/*   Updated: 2017/11/23 19:37:11 by bpisano     ###    #+. /#+    ###.fr     */
+/*   Updated: 2017/11/24 13:35:58 by htaillef    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "../includes/fillit.h"
-
-void	print_map(char **map)
-{
-	int		i;
-
-	i = 0;
-	while (map[i])
-	{
-		ft_putendl(map[i]);
-		i++;
-	}
-}
-
-int		out_of_bounds(t_map *map, t_tetri *tetri, int x, int y)
-{
-	if (tetri->width + x > map->size)
-		return (1);
-	if (tetri->height + y > map->size)
-		return (1);
-	return (0);
-}
 
 int		can_put(t_map *map, t_tetri *tetri, int x, int y)
 {
@@ -41,7 +20,7 @@ int		can_put(t_map *map, t_tetri *tetri, int x, int y)
 	int		t_x;
 	int		t_y;
 
-	if (out_of_bounds(map, tetri, x, y))
+	if ((tetri->width + x > map->size) || (tetri->height + y > map->size))
 		return (0);
 	o_x = x;
 	o_y = y;
@@ -118,7 +97,7 @@ void	remove_t(t_map *map, t_tetri *tetri, int x, int y)
 	}
 }
 
-int		try(t_map *map, int deep)
+int		try(t_map *map)
 {
 	int				x;
 	int				y;
@@ -128,24 +107,22 @@ int		try(t_map *map, int deep)
 		return (1);
 	if (!(current_t = ft_lstpopi(&(map->todo), 0)))
 		return (0);
-	y = 0;
-	while (y < map->size)
+	y = -1;
+	while (++y < map->size)
 	{
-		x = 0;
-		while (x < map->size)
+		x = -1;
+		while (++x < map->size)
 		{
 			if (put(map, (t_tetri *)current_t->content, x, y))
-			{	
-				if (try(map, deep + 1))
+			{
+				if (try(map))
 					return (1);
 				else
 					remove_t(map, (t_tetri *)(current_t->content), x, y);
-			}	
-			x++;
+			}
 		}
-		y++;
 	}
-	ft_lstaddi(&(map->todo), current_t, 0);
+	ft_lstadd(&(map->todo), current_t);
 	return (0);
 }
 
@@ -154,11 +131,11 @@ void	solve(t_map *map)
 	t_list	initial_todo;
 
 	initial_todo = *map->todo;
-	while (!try(map, 0))
+	while (!try(map))
 	{
 		map->todo = &initial_todo;
 		map->size++;
-		map->map = char_map(map->size);	
+		map->map = char_map(map->size);
 	}
-	print_map(map->map);	
+	print_map(map->map);
 }

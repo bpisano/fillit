@@ -6,13 +6,14 @@
 /*   By: bpisano <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2017/11/23 12:10:16 by bpisano      #+#   ##    ##    #+#       */
-/*   Updated: 2017/11/23 12:10:23 by bpisano     ###    #+. /#+    ###.fr     */
+/*   Updated: 2017/11/24 13:15:40 by htaillef    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "../includes/fillit.h"
 #include <stdio.h>
+
 int		main(int ac, char **av)
 {
 	char	*input;
