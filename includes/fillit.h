@@ -6,7 +6,7 @@
 /*   By: bpisano <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2017/11/23 12:13:30 by bpisano      #+#   ##    ##    #+#       */
-/*   Updated: 2017/11/23 14:12:25 by bpisano     ###    #+. /#+    ###.fr     */
+/*   Updated: 2017/11/24 13:58:27 by htaillef    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -47,4 +47,5 @@ void			set_min_pos(char **tetri, int *min_x, int *min_y);
 void			set_max_pos(char **tetri, int *max_x, int *max_y);
 void			solve(t_map *map);
 void			print_map(char **map);
+void			free_dual_strings(char **tetri);
 #endif

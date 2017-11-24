@@ -6,7 +6,7 @@
 /*   By: bpisano <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2017/11/23 12:08:32 by bpisano      #+#   ##    ##    #+#       */
-/*   Updated: 2017/11/23 12:09:57 by bpisano     ###    #+. /#+    ###.fr     */
+/*   Updated: 2017/11/24 13:57:03 by htaillef    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -37,6 +37,20 @@ int		height(char **tetri)
 	return (max_x + 1 - min_x);
 }
 
+void	free_dual_strings(char **tetri)
+{
+	int i;
+
+	i = 0;
+	while (tetri[i])
+	{
+		free(tetri[i]);
+		i++;
+	}
+	free(tetri);
+	tetri = NULL;
+}
+
 char	**resize(t_tetri *tetri)
 {
 	int		min_x;
@@ -62,6 +76,7 @@ char	**resize(t_tetri *tetri)
 		res[x - min_x][y - min_y] = '\0';
 	}
 	res[tetri->height] = NULL;
+	free_dual_strings(tetri->tetri);
 	return (res);
 }
 

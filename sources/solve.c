@@ -6,7 +6,7 @@
 /*   By: bpisano <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2017/11/23 12:11:12 by bpisano      #+#   ##    ##    #+#       */
-/*   Updated: 2017/11/24 13:35:58 by htaillef    ###    #+. /#+    ###.fr     */
+/*   Updated: 2017/11/24 13:58:31 by htaillef    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -135,6 +135,7 @@ void	solve(t_map *map)
 	{
 		map->todo = &initial_todo;
 		map->size++;
+		free_dual_strings(map->map);
 		map->map = char_map(map->size);
 	}
 	print_map(map->map);
