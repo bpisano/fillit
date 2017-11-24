@@ -2,7 +2,7 @@
 Here is the complete fillit project. It is designed to pass all the [42FileChecker](https://github.com/jgigault/42FileChecker) unit test.
 
 # How does it works ?
-Fillit is designed to takes one file in parameter containing from 0 to 26 [tetriminos](https://fr.wikipedia.org/wiki/Tétromino). The file should only contain "#", "." and "\n" characters.
+Fillit is designed to takes one file in parameter containing from 0 to 26 [tetriminos](https://fr.wikipedia.org/wiki/Tétromino). The file should only contain `#`, `.` and `\n` characters.
 Fillit will first verify the input (called **Verification** step), build a model that will be used for the solving algorithm (called **Build** step), adjust the tetriminos (called **Adjustment** step), build the smallest map (called **Map builder** step), then find the smaller square the tetriminos can fits in (called the **Solve** step).
 
 # Steps
@@ -22,7 +22,7 @@ This step calls `int input_is_valid(char *str);` to determine if the input is in
 This step is used to convert the input to a **t_tetri** structure that contains a 2D array of characters that represent a tetrimino and a *x*, *y*, *width* and *height* property.
 A **t_tetri** is declared as the following :
 
-    typedef struct	s_tetri
+    typedef struct	        s_tetri
     {
     	char		**tetri;
     	int		width;
@@ -37,11 +37,14 @@ This step calls `void adjust(t_tetri **model);` to adjust the model.
 
 ## Map Builder
 This step will create a **t_map** structure witch contain a `char **map` property who represents the smallest calculated map the tetrinminos should fits in.
+
 A **t_map** structure contains a `t_list *todo` property who represent the list of tetriminos who have to be placed on the map.
+
 A **t_map** also contain a `int size` property that represent the size of the map. The size is modified every time the size of *map* is modified.
+
 A **t_map** is declared as the following :
 
-    typedef struct	s_map
+    typedef struct	        s_map
     {
     	char		**map;
     	int		size;
