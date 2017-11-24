@@ -6,7 +6,7 @@
 #    By: bpisano <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/08 19:19:47 by bpisano           #+#    #+#              #
-#    Updated: 2017/11/24 13:41:49 by bpisano     ###    #+. /#+    ###.fr      #
+#    Updated: 2017/11/24 15:46:50 by htaillef    ###    #+. /#+    ###.fr      #
 #                                                                              #
 # **************************************************************************** #
 
@@ -98,6 +98,7 @@ EXTRA = ft_sqrt.c				\
 		ft_lst_push_back.c 		\
 		ft_lstpopi.c			\
 		ft_lstat.c				\
+		ft_lstlen.c				\
 
 OBJECTS = $(PART1:.c=.o) $(PART2:.c=.o) $(BONUS:.c=.o) $(EXTRA:.c=.o)
 

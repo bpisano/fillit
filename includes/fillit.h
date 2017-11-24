@@ -6,7 +6,7 @@
 /*   By: bpisano <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2017/11/23 12:13:30 by bpisano      #+#   ##    ##    #+#       */
-/*   Updated: 2017/11/24 13:58:27 by htaillef    ###    #+. /#+    ###.fr     */
+/*   Updated: 2017/11/24 14:15:01 by htaillef    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -16,8 +16,6 @@
 
 # include "../libft/libft.h"
 # include <fcntl.h>
-
-# include <stdio.h>
 
 # define BUF_SIZE 256
 
