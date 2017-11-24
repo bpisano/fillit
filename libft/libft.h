@@ -6,7 +6,7 @@
 /*   By: bpisano <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2017/11/23 12:53:56 by bpisano      #+#   ##    ##    #+#       */
-/*   Updated: 2017/11/23 16:13:51 by htaillef    ###    #+. /#+    ###.fr     */
+/*   Updated: 2017/11/24 13:41:41 by bpisano     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -111,5 +111,4 @@ char				*ft_strupcase(char *s);
 void				ft_lst_push_back(t_list **lst, t_list *new);
 t_list				*ft_lstpopi(t_list **lst, unsigned int index);
 t_list				*ft_lstat(t_list **lst, unsigned int index);
-void				ft_lstaddi(t_list **lst, t_list *new, unsigned int index);
 #endif

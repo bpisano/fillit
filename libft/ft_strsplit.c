@@ -1,13 +1,14 @@
 /* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ft_strsplit.c                                      :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: bpisano <marvin@42.fr>                     +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/13 22:54:38 by bpisano           #+#    #+#             */
-/*   Updated: 2017/11/14 19:29:08 by bpisano          ###   ########.fr       */
-/*                                                                            */
+/*                                                          LE - /            */
+/*                                                              /             */
+/*   ft_strsplit.c                                    .::    .:/ .      .::   */
+/*                                                 +:+:+   +:    +:  +:+:+    */
+/*   By: bpisano <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
+/*                                                 #+#   #+    #+    #+#      */
+/*   Created: 2017/11/24 13:37:53 by bpisano      #+#   ##    ##    #+#       */
+/*   Updated: 2017/11/24 13:38:08 by bpisano     ###    #+. /#+    ###.fr     */
+/*                                                         /                  */
+/*                                                        /                   */
 /* ************************************************************************** */
 
 #include "libft.h"
@@ -62,7 +63,7 @@ char			**ft_strsplit(const char *str, char c)
 	i = 0;
 	j = 0;
 	w_count = ft_words_count(str, c);
-	if (!(words = (char **)malloc(sizeof(char *) * (w_count + 2))) || !str)
+	if (!(words = (char **)malloc(sizeof(char *) * (w_count + 1))) || !str)
 		return (NULL);
 	while (str[i] == c && str[i])
 		i++;

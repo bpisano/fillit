@@ -6,13 +6,13 @@
 /*   By: bpisano <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2017/11/23 12:39:29 by bpisano      #+#   ##    ##    #+#       */
-/*   Updated: 2017/11/23 17:09:16 by bpisano     ###    #+. /#+    ###.fr     */
+/*   Updated: 2017/11/24 13:11:08 by bpisano     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
+
 t_list	*ft_lstpopi(t_list **lst, unsigned int index)
 {
 	unsigned int	i;
