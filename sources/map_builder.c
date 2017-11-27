@@ -6,7 +6,7 @@
 /*   By: bpisano <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2017/11/23 12:12:31 by bpisano      #+#   ##    ##    #+#       */
-/*   Updated: 2017/11/24 13:17:45 by htaillef    ###    #+. /#+    ###.fr     */
+/*   Updated: 2017/11/27 12:57:40 by bpisano     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -78,6 +78,7 @@ t_map			*build_map(t_list **model)
 	min_square = smaller_square(model);
 	new_map->map = char_map(min_square);
 	new_map->size = min_square;
+	new_map->area = min_square * min_square;
 	new_map->todo = *model;
 	return (new_map);
 }

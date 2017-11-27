@@ -6,7 +6,7 @@
 /*   By: bpisano <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2017/11/23 12:13:30 by bpisano      #+#   ##    ##    #+#       */
-/*   Updated: 2017/11/24 14:15:01 by htaillef    ###    #+. /#+    ###.fr     */
+/*   Updated: 2017/11/27 12:56:42 by bpisano     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -31,6 +31,7 @@ typedef struct	s_map
 {
 	char		**map;
 	int			size;
+	int			area;
 	t_list		*todo;
 }				t_map;
 
