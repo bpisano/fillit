@@ -6,7 +6,7 @@
 /*   By: bpisano <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2017/11/23 12:10:16 by bpisano      #+#   ##    ##    #+#       */
-/*   Updated: 2017/11/24 16:08:14 by htaillef    ###    #+. /#+    ###.fr     */
+/*   Updated: 2017/11/29 13:40:26 by htaillef    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -75,7 +75,7 @@ int		main(int ac, char **av)
 {
 	if (ac != 2)
 	{
-		ft_putstr("error\n");
+		usage();
 		return (0);
 	}
 	fillit(av[1]);

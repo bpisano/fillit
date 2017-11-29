@@ -6,7 +6,7 @@
 /*   By: bpisano <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2017/11/23 12:13:30 by bpisano      #+#   ##    ##    #+#       */
-/*   Updated: 2017/11/29 12:29:09 by bpisano     ###    #+. /#+    ###.fr     */
+/*   Updated: 2017/11/29 13:39:38 by htaillef    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -50,4 +50,5 @@ int				can_put(t_map *map, t_tetri *tetri, int x, int y);
 int				isolated_blocks(t_map *map, t_tetri *tetri, int x, int y);
 void			print_map(char **map);
 void			free_dual_strings(char **tetri);
+void			usage(void);
 #endif
