@@ -6,41 +6,12 @@
 /*   By: bpisano <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2017/11/23 12:11:12 by bpisano      #+#   ##    ##    #+#       */
-/*   Updated: 2017/11/28 19:30:13 by htaillef    ###    #+. /#+    ###.fr     */
+/*   Updated: 2017/11/29 12:28:28 by bpisano     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "../includes/fillit.h"
-
-int		can_put(t_map *map, t_tetri *tetri, int x, int y)
-{
-	int		o_x;
-	int		o_y;
-	int		t_x;
-	int		t_y;
-
-	if ((tetri->width + x > map->size) || (tetri->height + y > map->size))
-		return (0);
-	o_x = x;
-	o_y = y;
-	t_y = 0;
-	while (y < o_y + tetri->height)
-	{
-		x = o_x;
-		t_x = 0;
-		while (x < o_x + tetri->width)
-		{
-			if (map->map[y][x] != '.' && tetri->tetri[t_y][t_x] != '.')
-				return (0);
-			x++;
-			t_x++;
-		}
-		y++;
-		t_y++;
-	}
-	return (1);
-}
 
 int		put(t_map *map, t_tetri *tetri, int x, int y)
 {
@@ -97,52 +68,27 @@ void	remove_t(t_map *map, t_tetri *tetri, int x, int y)
 	}
 }
 
-int		contact(t_map *map, int x, int y, int deep)
+int		try_put(t_map *map, t_list *current_t, int x, int y)
 {
-	if (deep > 4)
+	int		isolated;
+
+	if (!put(map, (t_tetri *)current_t->content, x, y))
 		return (0);
-	if (x > map->size - 1 || y > map->size - 1 || map->map[y][x] != '.')
+	isolated = isolated_blocks(map, (t_tetri *)(current_t->content),
+			x, y);
+	map->area -= (isolated + 4);
+	if (try(map))
 		return (1);
-	return (1 + (contact(map, x, y + 1, deep + 1) ||
-				contact(map, x + 1, y, deep + 1)));
-}
-
-int		isolated_blocks(t_map *map, t_tetri *tetri, int x, int y)
-{
-	int		o_x;
-	int		o_y;
-	int		count;
-
-	o_x = x;
-	o_y = y;
-	count = 0;
-	while (y - o_y < tetri->height)
-	{
-		x = o_x;
-		while (x - o_x < tetri->width)
-		{
-			if (count > 3)
-				count = 0;
-			if ((x - 1 < 0 && y - 1 < 0) ||
-					(y - 1 < 0 && map->map[y][x - 1] != '.') ||
-					(x - 1 < 0 && map->map[y - 1][x] != '.'))
-			{
-				if (map->map[y][x] == '.')
-					count += contact(map, x, y, 0);
-			}
-			x++;
-		}
-		y++;
-	}
-	return (count > 3 ? 0 : count);
+	map->area += isolated + 4;
+	remove_t(map, (t_tetri *)(current_t->content), x, y);
+	return (0);
 }
 
 int		try(t_map *map)
 {
-	int				x;
-	int				y;
-	int				isolated;
-	t_list			*current_t;
+	int		x;
+	int		y;
+	t_list	*current_t;
 
 	if (!(map->todo))
 		return (1);
@@ -155,19 +101,8 @@ int		try(t_map *map)
 		x = -1;
 		while (++x < map->size)
 		{
-			if (put(map, (t_tetri *)current_t->content, x, y))
-			{
-				isolated = isolated_blocks(map, (t_tetri *)(current_t->content),
-						x, y);
-				map->area -= (isolated + 4);
-				if (try(map))
-					return (1);
-				else
-				{
-					map->area += isolated + 4;
-					remove_t(map, (t_tetri *)(current_t->content), x, y);
-				}
-			}
+			if (try_put(map, current_t, x, y))
+				return (1);
 		}
 	}
 	ft_lstadd(&(map->todo), current_t);

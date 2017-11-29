@@ -6,7 +6,7 @@
 #    By: htaillef <marvin@le-101.fr>                +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2017/11/28 19:29:06 by htaillef     #+#   ##    ##    #+#        #
-#    Updated: 2017/11/28 19:29:09 by htaillef    ###    #+. /#+    ###.fr      #
+#    Updated: 2017/11/29 12:10:41 by bpisano     ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -22,6 +22,7 @@ SRC = ./sources/main.c			\
 	  ./sources/map_builder.c	\
 	  ./sources/position.c		\
 	  ./sources/solve.c			\
+	  ./sources/contact.c		\
 	  ./sources/display.c		\
 
 OBJECTS = $(SRC:.c=.o)
