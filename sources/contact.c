@@ -6,41 +6,12 @@
 /*   By: bpisano <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2017/11/29 12:05:59 by bpisano      #+#   ##    ##    #+#       */
-/*   Updated: 2017/11/29 12:28:14 by bpisano     ###    #+. /#+    ###.fr     */
+/*   Updated: 2017/11/29 13:50:08 by bpisano     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "../includes/fillit.h"
-
-int		can_put(t_map *map, t_tetri *tetri, int x, int y)
-{
-	int		o_x;
-	int		o_y;
-	int		t_x;
-	int		t_y;
-
-	if ((tetri->width + x > map->size) || (tetri->height + y > map->size))
-		return (0);
-	o_x = x;
-	o_y = y;
-	t_y = 0;
-	while (y < o_y + tetri->height)
-	{
-		x = o_x;
-		t_x = 0;
-		while (x < o_x + tetri->width)
-		{
-			if (map->map[y][x] != '.' && tetri->tetri[t_y][t_x] != '.')
-				return (0);
-			x++;
-			t_x++;
-		}
-		y++;
-		t_y++;
-	}
-	return (1);
-}
 
 int		contact(t_map *map, int x, int y, int deep)
 {
